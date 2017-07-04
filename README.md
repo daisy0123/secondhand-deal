@@ -22,19 +22,20 @@ npm install css-loader --save-dev
 npm install file-loader --save-dev
 ```
 参考 <https://segmentfault.com/q/1010000007360125>
-第一步，
+
+第一步:
 ```
 npm install node-sass --save-dev
 npm install sass-loader --save-dev
 ```
-第二部，打开webpack.base.config.js在loaders里面加上
+第二步：打开webpack.base.config.js在loaders里面加上
 ```
 {
    test: /\.scss$/,
    loaders: ["style", "css", "sass"]
 }
 ```
-第三部，在需要用到scss的地方写上
+第三步：在需要用到scss的地方写上
 ```
 <style lang="scss" scoped>
   @import 'assets/sass/index.scss'
