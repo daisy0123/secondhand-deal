@@ -57,7 +57,7 @@ var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsS
 app.use(staticPath, express.static('./static'))
 
 app.get('/', function (req, res) {
-  res.send('Hello world!');
+  res.send('common world!');
 });
 
 module.exports = app.listen(port, function (err) {

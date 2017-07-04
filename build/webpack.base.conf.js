@@ -4,6 +4,7 @@ var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
 var glob = require('glob');
 var entries = getEntry(['./src/module/*.js', './src/module/**/*.js']); // 获得入口js文件
+var webpack = require('webpack')
 
 var env = process.env.NODE_ENV
 // check env & config/index.js to decide weither to enable CSS Sourcemaps for the
@@ -14,6 +15,13 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
   entry: entries,
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "windows.jQuery": "jquery"
+    })
+  ],
   output: {
     path: config.build.assetsRoot,
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
@@ -25,8 +33,9 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue',
       'src': path.resolve(__dirname, '../src'),
-      'common': path.resolve(__dirname, '../src/common'),
-      'components': path.resolve(__dirname, '../src/components')
+      'assets': path.resolve(__dirname, '../src/assets'),
+      'components': path.resolve(__dirname, '../src/components'),
+      jquery: "jquery/src/jquery"
     }
   },
   resolveLoader: {
@@ -36,12 +45,15 @@ module.exports = {
     loaders: [{
         test: /\.vue$/,
         loader: 'vue'
+      },{
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       },
       {
         test: /\.js$/,
         loader: 'babel',
         include: projectRoot,
-        exclude: /node_modules/
+        exclude: [/node_modules/]
       },
       {
         test: /\.json$/,

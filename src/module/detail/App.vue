@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import 'common/css/reset.css';
-  import Hello from 'components/Hello/Hello'
+  import 'assets/css/reset.css';
+  import Hello from 'components/common/navbar'
 
   export default {
     name: 'app',

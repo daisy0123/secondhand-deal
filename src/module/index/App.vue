@@ -1,29 +1,21 @@
 <template>
-  <div id="app">
-    <img src="./images/logo.png">
-    <hello></hello>
+  <div id="index-con">
+    <div class="row index-pic" v-for="n in 4">
+      <div class="col-xs-6 col-md-3">
+        <a href="detail.html" class="thumbnail">
+          <img src="./images/logo.png" alt=" ">
+        </a>
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
-  import 'common/css/reset.css';
-  import Hello from 'components/Hello/Hello'
+  import 'assets/css/reset.css';
+  import 'assets/css/bootstrap.min.css';
+  import 'assets/sass/index.scss';
+  import 'assets/js/bootstrap.min';
 
-  export default {
-    name: 'app',
-    components: {
-      Hello
-    }
-  }
 </script>
 
-<style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
-</style>
